@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="checkout_title">Оформлення замовлення — SupremeTech</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="SupremeTechMultilanguage.js"></script> <!-- Підключення файлу для мультимовності -->
+  <style>
+    main { max-width: 800px; margin: auto; padding: 2rem; }
+    .checkout-form input, .checkout-form select, .checkout-form textarea {
+      width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 0.5rem; border: 1px solid #ccc;
+    }
+    .checkout-form label { font-weight: bold; margin-top: 1rem; display: block; }
+    .order-summary { background: #f8f8f8; padding: 1rem; border-radius: 0.75rem; margin-bottom: 2rem; }
+    .order-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+    .order-total { font-size: 1.2rem; font-weight: bold; text-align: right; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="home">SupremeTech</div>
+    <nav>
+      <a href="index.html" data-i18n="home_link">Головна</a>
+      <a href="catalog.html" data-i18n="catalog_link">Каталог</a>
+      <a href="cart.html" data-i18n="cart_link">Кошик</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 data-i18n="checkout_title">Оформлення замовлення</h1>
+
+    <div class="order-summary" id="orderSummary"></div>
+
+    <form class="checkout-form" onsubmit="submitOrder(event)">
+      <label for="name" data-i18n="name_label">Ім’я</label>
+      <input type="text" id="name" required />
+
+      <label for="email" data-i18n="email_label">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="phone" data-i18n="phone_label">Телефон</label>
+      <input type="tel" id="phone" required />
+
+      <label for="delivery" data-i18n="delivery_label">Доставка</label>
+      <select id="delivery">
+        <option value="nova" data-i18n="nova_delivery">Нова Пошта</option>
+        <option value="pickup" data-i18n="pickup_delivery">Самовивіз</option>
+      </select>
+
+      <label for="note" data-i18n="note_label">Примітки</label>
+      <textarea id="note" rows="3"></textarea>
+
+      <button type="submit" data-i18n="confirm_order">Підтвердити замовлення</button>
+    </form>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">© 2025 SupremeTech. Всі права захищені.</p>
+  </footer>
+
+  <script>
+    const summaryEl = document.getElementById('orderSummary');
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+    function renderOrderSummary() {
+      let total = 0;
+      summaryEl.innerHTML = '<h3 data-i18n="order_summary">Ваше замовлення:</h3>';
+      for (let id in cart) {
+        const item = cart[id];
+        const sum = item.price * item.quantity;
+        total += sum;
+        summaryEl.innerHTML += `<div class="order-item">${item.name} x${item.quantity} <span>${sum} ₴</span></div>`;
+      }
+      summaryEl.innerHTML += `<div class="order-total" data-i18n="order_total">Загальна сума: ${total} ₴</div>`;
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+      alert("Замовлення оформлено! Дякуємо за покупку у SupremeTech.");
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    }
+
+    renderOrderSummary();
+  </script>
+</body>
+</html>
+

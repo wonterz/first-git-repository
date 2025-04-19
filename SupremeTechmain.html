@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SupremeTech - Люкс Техніка</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="SupremeTechMultilanguage.js"></script> <!-- Підключення файлу для мультимовності -->
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="home">SupremeTech</div>
+    <nav>
+      <a href="index.html" data-i18n="home">Головна</a>
+      <a href="catalog.html" data-i18n="catalog">Каталог</a>
+      <a href="cart.html" data-i18n="cart">Кошик</a>
+      <a href="#" onclick="toggleLang()" data-i18n="lang">UA / EN</a>
+      <a href="login.html" data-i18n="login">Увійти</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" data-i18n="theme">Тема</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1 data-i18n="hero_title">Елітна периферія для справжніх геймерів</h1>
+        <p data-i18n="hero_subtitle">Миші, клавіатури, гарнітури — лише топові моделі</p>
+        <a href="catalog.html" class="btn" data-i18n="catalog_link">Перейти до каталогу</a>
+      </div>
+      <div class="hero-image">
+        <!-- TODO: Вставити зображення героїчного банера -->
+        <img src="https://best.kevin.games/wp-content/uploads/2022/06/The-Best-Gaming-Brands.jpeg" alt="Геймерська периферія">
+      </div>
+    </section>
+
+    <section class="features">
+      <h2 data-i18n="features_title">Наші переваги</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3 data-i18n="premium_quality">Преміум якість</h3>
+          <p data-i18n="premium_quality_desc">Ми продаємо лише сертифіковану продукцію від світових брендів.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="warranty">Гарантія 2 роки</h3>
+          <p data-i18n="warranty_desc">Усі товари мають офіційну гарантію на 24 місяці.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="fast_delivery">Швидка доставка</h3>
+          <p data-i18n="fast_delivery_desc">Доставляємо по всій Україні протягом 1–3 днів.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bestsellers">
+      <h2 data-i18n="bestsellers_title">Топ продажів</h2>
+      <div class="product-preview">
+        <div class="product-card">
+          <img src="https://content.rozetka.com.ua/goods/images/big/519335392.jpg" alt="Мишка">
+          <h3 data-i18n="mouse_title">Ajazz AJ159 Apex</h3>
+          <p data-i18n="mouse_desc">Ідеальна мишка для FPS-геймерів</p>
+          <button onclick="addToCart('mouse1')" data-i18n="add_to_cart">У кошик</button>
+        </div>
+        <div class="product-card">
+          <img src="https://www.mchose.store/cdn/shop/files/0Dead_Zone1.jpg?v=1735555729&width=700" alt="Клавіатура">
+          <h3 data-i18n="keyboard_title">MCHOSE Ace68</h3>
+          <p data-i18n="keyboard_desc">Топова Магнітна клавіатура!</p>
+          <button onclick="addToCart('keyboard1')" data-i18n="add_to_cart">У кошик</button>
+        </div>
+        <div class="product-card">
+          <img src="https://cdn.comfy.ua/media/catalog/product/cache/5/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/_/1_15_1__2.jpg" alt="Гарнітура">
+          <h3 data-i18n="headset_title">Logitech G PRO X 2 LightSpeed Wireless White</h3>
+          <p data-i18n="headset_desc">Об'ємний звук та комфорт на довгі сесії</p>
+          <button onclick="addToCart('headset1')" data-i18n="add_to_cart">У кошик</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h2 data-i18n="newsletter_title">Підписка на новини</h2>
+      <p data-i18n="newsletter_desc">Будьте першими, хто дізнається про новинки та знижки!</p>
+      <form onsubmit="subscribe(event)">
+        <input type="email" placeholder="Ваш Email" required>
+        <button type="submit" data-i18n="subscribe">Підписатися</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">© 2025 SupremeTech. Всі права захищені.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+

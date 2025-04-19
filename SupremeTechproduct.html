@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="product_title">Деталі товару — SupremeTech</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="SupremeTechMultilanguage.js"></script> <!-- Підключення файлу для мультимовності -->
+  <style>
+    .product-page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .product-image img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+    .product-info h1 {
+      margin-top: 0;
+    }
+    .product-actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .product-actions input {
+      width: 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="home">SupremeTech</div>
+    <nav>
+      <a href="index.html" data-i18n="home_link">Головна</a>
+      <a href="catalog.html" data-i18n="catalog_link">Каталог</a>
+      <a href="cart.html" data-i18n="cart_link">Кошик</a>
+      <a href="#" onclick="toggleLang()" data-i18n="lang">UA / EN</a>
+      <a href="login.html" data-i18n="login_link">Увійти</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" data-i18n="theme">Тема</button>
+  </header>
+
+  <main>
+    <div class="product-page">
+      <div class="product-image">
+        <!-- Заміни на реальне зображення -->
+        <img src="images/mouse1.jpg" alt="UltraSpeed Pro" />
+      </div>
+      <div class="product-info">
+        <h1 id="productName" data-i18n="product_name">UltraSpeed Pro</h1>
+        <p id="productDescription" data-i18n="product_description">
+          Високоточна геймерська мишка з RGB підсвічуванням, 16000 DPI та ергономічним дизайном.
+        </p>
+        <p><strong data-i18n="price_label">Ціна:</strong> <span id="productPrice">1799</span> ₴</p>
+
+        <div class="product-actions">
+          <label data-i18n="quantity_label">Кількість: <input type="number" id="quantity" value="1" min="1" /></label>
+          <button onclick="addToCart('mouse1')" data-i18n="add_to_cart">Додати до кошика</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">© 2025 SupremeTech. Всі права захищені.</p>
+  </footer>
+
+  <script>
+    function addToCart(id) {
+      const name = document.getElementById('productName').textContent;
+      const description = document.getElementById('productDescription').textContent;
+      const price = parseInt(document.getElementById('productPrice').textContent);
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const image = 'images/mouse1.jpg';
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      if (cart[id]) {
+        cart[id].quantity += quantity;
+      } else {
+        cart[id] = { name, description, price, quantity, image };
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Додано до кошика!');
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="catalog_title">Каталог — SupremeTech</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="SupremeTechMultilanguage.js"></script> <!-- Підключення файлу для мультимовності -->
+</head>
+<body>
+  <header>
+    <div class="logo" data-i18n="home">SupremeTech</div>
+    <nav>
+      <a href="index.html" data-i18n="home_link">Головна</a>
+      <a href="catalog.html" class="active" data-i18n="catalog_link">Каталог</a>
+      <a href="cart.html" data-i18n="cart_link">Кошик</a>
+      <a href="#" onclick="toggleLang()" data-i18n="lang">UA / EN</a>
+      <a href="login.html" data-i18n="login_link">Увійти</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()" data-i18n="theme">Тема</button>
+  </header>
+
+  <main>
+    <h1 data-i18n="catalog_title">Каталог продукції</h1>
+
+    <div class="filters">
+      <select id="categoryFilter" onchange="filterProducts()">
+        <option value="all" data-i18n="all_categories">Усі категорії</option>
+        <option value="mouse" data-i18n="mice">Миші</option>
+        <option value="keyboard" data-i18n="keyboards">Клавіатури</option>
+        <option value="headset" data-i18n="headsets">Гарнітури</option>
+      </select>
+
+      <select id="sortFilter" onchange="sortProducts()">
+        <option value="default" data-i18n="sort_by">Сортувати</option>
+        <option value="priceAsc" data-i18n="price_asc">Ціна ↑</option>
+        <option value="priceDesc" data-i18n="price_desc">Ціна ↓</option>
+        <option value="name" data-i18n="name">Назва</option>
+      </select>
+
+      <input type="text" id="searchInput" placeholder="Пошук..." oninput="searchProducts()" data-i18n="search_placeholder">
+    </div>
+
+    <div id="productList" class="product-grid">
+      <!-- Категорії товарів -->
+      <div class="product-card" data-category="mouse" data-name="Logitech G PRO 2" data-price="1799">
+        <img src="https://cdn.comfy.ua/media/catalog/product/cache/5/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/_/1_gaming_mous.jpg" alt="Logitech G PRO 2 LightSpeed">
+        <h3 data-i18n="mouse_title">Logitech G PRO 2 LightSpeed Wireless Gaming Mouse Black</h3>
+        <p data-i18n="price">4200 ₴</p>
+        <button onclick="addToCart('mouse1')" data-i18n="add_to_cart">У кошик</button>
+      </div>
+
+      <div class="product-card" data-category="keyboard" data-name="MCHOSE Ace 68" data-price="2899">
+        <img src="https://www.mchose.store/cdn/shop/files/Ace68-white_Topographic.jpg?v=1738728446&width=3000" alt="MCHOSE Ace 68">
+        <h3 data-i18n="keyboard_title">MCHOSE Ace 68 Hall Effect Magnetic Switch Gaming Keyboard</h3>
+        <p data-i18n="price">3899 ₴</p>
+        <button onclick="addToCart('keyboard1')" data-i18n="add_to_cart">У кошик</button>
+      </div>
+
+      <div class="product-card" data-category="headset" data-name="Logitech G PRO X 2 LightSpeed" data-price="2499">
+        <img src="https://content2.rozetka.com.ua/goods/images/big/336445056.jpg" alt="Logitech G PRO X 2 LightSpeed">
+        <h3 data-i18n="headset_title">Logitech G PRO X 2 LightSpeed Wireless White</h3>
+        <p data-i18n="price">9999 ₴</p>
+        <button onclick="addToCart('headset1')" data-i18n="add_to_cart">У кошик</button>
+      </div>
+
+      <div class="product-card" data-category="mouse" data-name="Raptor Claw" data-price="1999">
+        <img src="images/mouse2.jpg" alt="Raptor Claw">
+        <h3 data-i18n="mouse_title">Raptor Claw</h3>
+        <p data-i18n="price">1999 ₴</p>
+        <button onclick="addToCart('mouse2')" data-i18n="add_to_cart">У кошик</button>
+      </div>
+
+      <!-- Інші товари можна додавати таким самим чином -->
+
+    </div>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">© 2025 SupremeTech. Всі права захищені.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
